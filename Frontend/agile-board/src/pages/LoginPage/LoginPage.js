@@ -26,7 +26,6 @@ const LoginPage = () => {
   }
 
   return (
-    
     <div className='login'>
 
       <div>
