@@ -9,6 +9,7 @@ const HomePage = () => {
   return (
 
     <div className='home'>
+      
       <h1>В разработке</h1>
       <img 
         src={Development} 
