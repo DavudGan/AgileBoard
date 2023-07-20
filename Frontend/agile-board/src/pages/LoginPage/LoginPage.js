@@ -1,6 +1,6 @@
 import {useState,React} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
-import {checkForRegisterUser} from '../DataUser/UserD';
+import {Registered} from '../DataUser/UserDB';
 import icon_men from './icon_men.png';
 import check_list from './Checklist.jpg';
 import './LoginPageCSS.css'
@@ -16,7 +16,7 @@ const LoginPage = () => {
 
   async function loginUserChek () {
       
-    if(await checkForRegisterUser(loginUser,passUser)) {
+    if(await Registered(loginUser,passUser)) {
       return novigate(`/`)
     } 
 

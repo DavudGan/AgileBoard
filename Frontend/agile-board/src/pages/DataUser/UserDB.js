@@ -1,4 +1,5 @@
 import localforage from "localforage";
+import uuid from "react-uuid"
 
 export async function getUsers(query) {
     await fakeNetwork(`getUsers:${query}`);
@@ -8,7 +9,7 @@ export async function getUsers(query) {
 }
 
 export async function createUser(login, password) {
-    let id = Math.random().toString(36).substring(2, 9)
+    let id = uuid()
     let user = {id, login, password}
     let users = await getUsers()
     users.unshift(user)
@@ -16,7 +17,7 @@ export async function createUser(login, password) {
     return user
 }
 
-export async function checkForRegisterUser(login, password) {
+export async function Registered(login, password) {
     await fakeNetwork(`user:${login}${password}`)
     let users = await getUsers()
     let user = await users.find(user => user.login === login && user.password === password)
