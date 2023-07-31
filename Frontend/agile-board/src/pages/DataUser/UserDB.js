@@ -33,10 +33,10 @@ export async function checkForDuplicate(login) {
     return user.login === login? false:true
 }
 
-export async function getUser(id) {
-    await fakeNetwork(`user:${id}`)
+export async function getUser(login) {
+    await fakeNetwork(`user:${login}`)
     let users = await localforage.getItem('users')
-    let user = users.find(user => user.id === id)
+    let user = users.find(user => user.login === login)
     return user ?? null
 }
 

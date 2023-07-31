@@ -1,9 +1,11 @@
 import {useState,React} from 'react'
-import { Link } from 'react-router-dom';
-import {createUser, checkForDuplicate} from '../DataUser/UserDB'
+import {Link, useNavigate} from 'react-router-dom';
+import {createUser, checkForDuplicate, getUser} from '../DataUser/UserDB'
 import reg_icon from './reg-icon.jpg';
 import people from './people.png'
 import '../LoginPage/LoginPageCSS.css'
+import {useDispatch} from 'react-redux';
+import {setUser} from '../../store/slices/userSlice';
 
 
 
@@ -12,10 +14,20 @@ const RegisterPage = () => {
   const [passwordRegUser, setRegPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState(false)
 
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   async function RegUserChek () {
 
     if (loginRegUser && passwordRegUser && await checkForDuplicate(loginRegUser)){
       await createUser(loginRegUser,passwordRegUser)
+      let user = await getUser(loginRegUser)
+      dispatch (setUser({
+        name: user.login,
+        id: user.id,
+        pass: user.password
+      }))
+      return navigate(`/`)
     } else {
         setErrorMessage (true)
       }
@@ -64,7 +76,7 @@ const RegisterPage = () => {
         {errorMessage && (<p className='error'>Данный пользователь уже зарегистрирован! Для входа нажмите на{" "}<Link to='/login'>ссылку</Link></p>)}
 
         <p>
-          Может у вас есть уже аккаунт и вы хотели бы попробовать войти, для этого перейдите по {" "}<Link to='/login'>ссылке</Link>
+          Есть аккаунт? Перейди по {" "}<Link to='/login'>ссылке</Link>
         </p>
 
       </div>

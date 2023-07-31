@@ -1,9 +1,11 @@
 import {useState,React} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
-import {Registered} from '../DataUser/UserDB';
+import {Registered, getUser} from '../DataUser/UserDB';
 import icon_men from './icon_men.png';
 import check_list from './Checklist.jpg';
 import './LoginPageCSS.css'
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../store/slices/userSlice';
 
 
 const LoginPage = () => {
@@ -11,13 +13,20 @@ const LoginPage = () => {
   const [loginUser, setLogin] = useState('')
   const [passUser, setPass] = useState('')
   const [errorMessage, setErrorMessage] = useState(false)
-
-  const novigate = useNavigate()
+  
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   async function loginUserChek () {
       
     if(await Registered(loginUser,passUser)) {
-      return novigate(`/`)
+      let user = await getUser(loginUser)
+      dispatch (setUser({
+        name: user.login,
+        id: user.id,
+        pass: user.password
+      }))
+      return navigate(`/`)
     } 
 
     else {

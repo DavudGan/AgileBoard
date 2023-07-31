@@ -1,0 +1,7 @@
+.board_create{
+    margin: 10px 100px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
