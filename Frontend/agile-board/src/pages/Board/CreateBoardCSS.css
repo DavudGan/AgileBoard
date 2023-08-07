@@ -1,7 +1,70 @@
-.board_create{
-    margin: 10px 100px;
+.board_create_popap {
+    position: fixed;
+    overflow: auto;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5)
+}
+
+.board_create_popap_1 {
     display: flex;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -100px;
+    margin-top: -75px;
     flex-direction: column;
     flex-wrap: wrap;
-    align-content: flex-start;
+    align-items: center;
+}
+
+.name_board_sign_inp, .text_board_sign_inp{
+    width: 403px;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 25px;
+    margin-bottom: 4px;
+    outline: none;
+    border: 1px solid #868282;
+    border-radius: 50px;
+    height: 46px;
+    line-height: 46px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #444;
+    background-color: #fff;
+}
+
+.create_board, .b_close_board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 15px 15px;
+    margin-bottom: 9px;
+    outline: none;
+    border: 0px solid #fff;
+    border-radius: 6px;
+    line-height: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #444;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    appearance: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    transition: box-shadow 0.2s;
+    width: 267px;
+}
+
+.create_board{
+    margin-top: 9px
 }

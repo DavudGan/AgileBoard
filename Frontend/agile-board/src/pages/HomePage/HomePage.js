@@ -1,10 +1,11 @@
 import React from 'react';
-import './HomePageCSS.css'
-import {Link, Navigate} from 'react-router-dom';
+import {Navigate} from 'react-router-dom';
 import {useAuth} from '../../hooks/useAuth'
 import { useDispatch } from 'react-redux';
 import {removeUser} from '../../store/slices/userSlice';
 import Board from '../Board/Board';
+import CreateBoard from '../Board/CreateBoard';
+import './HomePageCSS.css'
 
 
 const HomePage = () => {
@@ -27,12 +28,7 @@ const HomePage = () => {
       </div>
       
       <div className='link'>
-        <Link to='/board' className='link_board'>
-          <button
-            className='link_create_board'
-            >Создать доску
-          </button>
-        </Link>
+        <CreateBoard />
       </div>
 
       <Board />

@@ -9,9 +9,9 @@ export async function getBoards(query) {
     return boards
 }
 
-export async function createBoard(name, text, idUsers) {
+export async function createBoard(name, idUsers) {
     let idBoards = uuid()
-    let board = {idBoards, idUsers, name, text}
+    let board = {idBoards, idUsers, name}
     let boards = await getBoards()
     boards.unshift(board)
     await set(boards)

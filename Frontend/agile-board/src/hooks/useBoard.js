@@ -7,6 +7,5 @@ export function useBoard() {
         allBoard,
         idBoard,
         name,
-        text,
     }
 }
